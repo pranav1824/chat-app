@@ -1,0 +1,98 @@
+💬 Real-Time Chat Application
+
+A full-stack real-time chat application built using Flask (Python) for the backend and React (JavaScript) for the frontend.
+It supports real-time communication through Socket.IO, along with persistent message storage in SQLite.
+
+
+🧩 Tech Stack
+Frontend
+React.js
+Socket.IO Client
+React Context / useState
+Fetch API
+Backend
+Flask
+Flask-SocketIO
+Flask-SQLAlchemy
+Flask-Migrate
+SQLite (for local database)
+
+📁 Project Structure
+ChatApp/
+│
+├── Chat-backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── routes.py
+│   │   └── socket_events.py
+│   ├── migrations/
+│   ├── instance/
+│   │   └── app.db
+│   ├── run.py
+│   ├── requirements.txt
+│
+├── Chat-frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Login.js
+│   │   │   └── ChatRoom.js
+│   │   ├── socket.js
+│   │   └── App.js
+│   ├── package.json
+│
+└── README.md
+
+⚙️ Installation Guide
+🖥️ 1. Clone the repository
+git clone https://github.com/yourusername/realtime-chat-app.git
+cd realtime-chat-app
+
+🧠 2. Backend Setup (Flask)
+cd Chat-backend
+python -m venv venv
+venv\Scripts\activate  # On macOS/Linux: source venv/bin/activate
+
+pip install -r requirements.txt
+flask db init
+flask db migrate -m "initial migration"
+flask db upgrade
+python run.py
+
+Backend runs on http://localhost:5000
+
+💻 3. Frontend Setup (React)
+cd Chat-frontend
+npm install
+npm start
+
+Frontend runs on http://localhost:3000
+
+🧠 API Endpoints
+Method	Endpoint	Description
+GET	/chat/messages	Get chat history
+POST	/chat/send	Send a message (via Socket.IO)
+⚡ Real-Time Socket Events
+Event	Direction	Description
+join	Client → Server	Join chat room
+send_message	Client → Server	Send a new message
+receive_message	Server → Client	Broadcast new message to all users
+🗃️ Database Models
+
+User
+id (int, primary key)
+username (string)
+password_hash (string)
+role (string)
+Message
+id (int, primary key)
+username (string)
+content (string)
+timestamp (datetime)
+
+
+🧑‍💻 Author
+Pranav
+
+
+This project is licensed under the MIT License — you’re free to use, modify, and distribute.
